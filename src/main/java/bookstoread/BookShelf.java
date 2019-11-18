@@ -34,4 +34,13 @@ public class BookShelf {
     public <K> Map<K, List<Book>> groupBy(final Function<Book, K> fx) {
         return books.stream().collect(groupingBy(fx));
     }
+
+    public Progress progress() {
+        final int booksRead = Long.valueOf(books.stream().filter(Book::isRead).count()).intValue();
+        final int booksToRead = books.size() - booksRead;
+        final int percentageCompleted = booksRead * 100 / books.size();
+        final int percentageToRead = booksToRead * 100 / books.size();
+
+        return new Progress(percentageCompleted, percentageToRead, 0);
+    }
 }

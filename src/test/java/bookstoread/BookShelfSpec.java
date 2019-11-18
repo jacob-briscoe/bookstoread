@@ -4,11 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-import java.time.Month;
-
-import static java.util.Arrays.asList;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.time.Year;
 import java.util.Collections;
@@ -16,10 +12,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("A bookshelf")
+@ExtendWith(BooksParameterResolver.class)
 class BookShelfSpec {
 
     private BookShelf shelf;
@@ -29,13 +27,13 @@ class BookShelfSpec {
     private Book mythicalManMonth;
 
     @BeforeEach
-    void setUp() {
+    void setUp(final Map<String, Book> books) {
         shelf = new BookShelf();
 
-        cleanCode = new Book("Clean Code", "Robert C. Martin", LocalDate.of(2008, Month.AUGUST, 1));
-        effectiveJava = new Book("Effective Java", "Joshua Bloch", LocalDate.of(2008, Month.MAY, 8));
-        codeComplete = new Book("Code Complete", "Steve McConnel", LocalDate.of(2004, Month.JUNE, 9));
-        mythicalManMonth = new Book("Mythical Man-Month", "Frederick Phillips Brooks", LocalDate.of(1975, Month.JANUARY, 1));
+        this.cleanCode = books.get("Clean Code");
+        this.effectiveJava = books.get("Effective Java");
+        this.codeComplete = books.get("Code Complete");
+        this.mythicalManMonth = books.get("Mythical Man-Month");
     }
 
     @Nested
