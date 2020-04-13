@@ -11,7 +11,9 @@ repositories {
 
 dependencies {
     def junitVersion = '5.5.2'
+    
     testCompile 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
     testCompile 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+    testCompile 'org.junit.platform:junit-platform-engine:1.6.2'
     testCompile 'org.assertj:assertj-core:3.13.2'
 }
