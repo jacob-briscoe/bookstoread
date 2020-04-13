@@ -3,3 +3,7 @@ gradle
 .idea
 build
 out
+/bin/
+/.project
+/.classpath
+/.settings/*
