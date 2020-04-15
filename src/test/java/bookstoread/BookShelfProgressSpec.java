@@ -1,18 +1,17 @@
 package bookstoread;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
-@DisplayName("A bookshelf progress")
+@DisplayName("Bookshelf progress")
 @ExtendWith(BooksParameterResolver.class)
 public class BookShelfProgressSpec {
 
